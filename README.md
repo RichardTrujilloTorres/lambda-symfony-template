@@ -1,4 +1,3 @@
-
 # lambda-symfony-template
 
 A minimal, production-ready starter template for running **Symfony 7** on **AWS Lambda** using **Bref** and the **Serverless Framework**.
@@ -10,7 +9,7 @@ This template provides:
 - Serverless Framework configuration  
 - Production-ready logging (JSON to stderr → CloudWatch Logs)  
 - PHPUnit test suite  
-- Local development via Symfony local server or PHP built-in server  
+- Local development via Symfony server or PHP built-in server  
 - Clean project structure optimized for serverless workloads  
 
 ---
@@ -21,7 +20,7 @@ This template provides:
 - Composer
 - Serverless Framework (v3)
 - AWS credentials configured locally
-- Docker (optional for local Lambda layers)
+- Docker (optional, for Lambda layers)
 
 ---
 
@@ -29,7 +28,7 @@ This template provides:
 
 Clone the repository:
 
-```
+```bash
 git clone https://github.com/RichardTrujilloTorres/lambda-symfony-template.git
 cd lambda-symfony-template
 composer install
@@ -39,13 +38,9 @@ composer install
 
 ## 🧪 Running Tests
 
-```
-composer test
-```
+Run the test suite with:
 
-Or manually:
-
-```
+```bash
 ./vendor/bin/phpunit
 ```
 
@@ -53,15 +48,15 @@ Or manually:
 
 ## 🖥️ Local Development
 
-### Symfony CLI (preferred)
+### Symfony CLI (preferred):
 
-```
+```bash
 symfony server:start
 ```
 
-### PHP built-in server
+### PHP built-in server:
 
-```
+```bash
 php -S localhost:8000 -t public
 ```
 
@@ -73,33 +68,88 @@ http://localhost:8000/health
 
 ---
 
+## 🧰 Developer Commands (Makefile)
+
+This template includes a **Makefile** to provide a clean developer experience.
+
+### Start local server
+
+```bash
+make start
+```
+
+Or use PHP built-in:
+
+```bash
+make start-php
+```
+
+### Run tests
+
+```bash
+make test
+```
+
+### Deploy to AWS Lambda
+
+```bash
+make deploy
+```
+
+### Tail CloudWatch logs
+
+```bash
+make logs
+```
+
+### Clear caches
+
+```bash
+make clean
+```
+
+### Rebuild production cache
+
+```bash
+make cache
+```
+
+### Install/update dependencies
+
+```bash
+make install
+make update
+```
+
+---
+
 ## 📝 Logging
 
 Production logging is configured to:
 
 - Use JSON formatter  
 - Write to `php://stderr`  
-- Send logs directly to AWS CloudWatch in Lambda
+- Appear automatically in CloudWatch Logs  
 
-Local development uses normal file logging under `var/log/`.
+Local development logs remain in `var/log/`.
 
 ---
 
 ## ☁️ Deploying to AWS Lambda
 
-1. Ensure Serverless Framework 3.x is installed:
+Ensure Serverless Framework v3 is installed:
 
-```
+```bash
 npm install -g serverless
 ```
 
-2. Deploy:
+Deploy:
 
-```
-serverless deploy
+```bash
+make deploy
 ```
 
-After deployment, Serverless prints your API endpoint, e.g.:
+After deployment, Serverless prints your API endpoint, for example:
 
 ```
 https://xxxxx.execute-api.region.amazonaws.com/health
@@ -112,28 +162,13 @@ https://xxxxx.execute-api.region.amazonaws.com/health
 ```
 .
 ├── config/              # Symfony configuration
-├── public/              # Front controller for Symfony
-├── src/                 # PHP source files
-├── tests/               # PHPUnit tests
-├── serverless.yml       # Lambda + API Gateway configuration
+├── public/              # Front controller
+├── src/                 # Application source code
+├── tests/               # PHPUnit test suite
+├── serverless.yml       # Lambda + API Gateway config
+├── Makefile             # Developer shortcuts
 └── composer.json
 ```
-
----
-
-## 🧱 Included Features
-
-### ✓ Health Endpoint
-Simple `/health` endpoint for uptime checks.
-
-### ✓ PHPUnit Setup
-Fully configured and ready to run.
-
-### ✓ Bref Lambda Runtime
-Using `bref/symfony-bridge` & `php-82` layer.
-
-### ✓ CloudWatch Logging
-Production logs use a JSON stream handler to stderr.
 
 ---
 
