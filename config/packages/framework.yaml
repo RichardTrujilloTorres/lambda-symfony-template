@@ -8,6 +8,9 @@ framework:
     #esi: true
     #fragments: true
 
+    trusted_proxies: 'REMOTE_ADDR'
+    trusted_headers: 'x-forwarded-all'
+
 when@test:
     framework:
         test: true
