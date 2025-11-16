@@ -33,7 +33,9 @@ jobs:
       - name: Run tests
         run: composer test
 
-      # Optional: run coverage
-      # Uncomment these 2 lines if you want coverage in CI
-      # - name: Test with coverage
-      #   run: composer test:coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.txt
+          fail_ci_if_error: true
