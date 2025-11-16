@@ -3,17 +3,18 @@
 namespace App\EventListener;
 
 use App\Exception\ValidationException;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Psr\Log\LoggerInterface;
 
 class ExceptionListener
 {
     public function __construct(
         private LoggerInterface $logger,
-        private string $environment
-    ) {}
+        private string $environment,
+    ) {
+    }
 
     public function __invoke(ExceptionEvent $event): void
     {
@@ -52,7 +53,7 @@ class ExceptionListener
             $message = $exception->getMessage();
         } else {
             $statusCode = 500;
-            $message = $this->environment === 'dev'
+            $message = 'dev' === $this->environment
                 ? $exception->getMessage()
                 : 'Internal server error';
         }
@@ -63,7 +64,7 @@ class ExceptionListener
         ];
 
         // Extra debug info in dev-mode
-        if ($this->environment === 'dev') {
+        if ('dev' === $this->environment) {
             $response['exception'] = [
                 'class' => get_class($exception),
                 'file'  => $exception->getFile(),

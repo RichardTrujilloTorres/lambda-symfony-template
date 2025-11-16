@@ -28,7 +28,6 @@ class ExceptionListenerTest extends TestCase
         );
     }
 
-
     public function testValidationExceptionReturns400WithViolations(): void
     {
         $logger = $this->createMock(LoggerInterface::class);
@@ -63,7 +62,6 @@ class ExceptionListenerTest extends TestCase
         $this->assertSame('Error 1', $data['violations'][0]['message']);
     }
 
-
     public function testGenericExceptionInProd(): void
     {
         $logger = $this->createMock(LoggerInterface::class);
@@ -95,7 +93,6 @@ class ExceptionListenerTest extends TestCase
         $this->assertArrayNotHasKey('exception', $data);
     }
 
-
     public function testGenericExceptionInDev(): void
     {
         $logger = $this->createMock(LoggerInterface::class);
@@ -119,7 +116,6 @@ class ExceptionListenerTest extends TestCase
         $this->assertArrayHasKey('file', $data['exception']);
         $this->assertArrayHasKey('line', $data['exception']);
     }
-
 
     public function testHttpExceptionReturnsCustomStatusAndMessage(): void
     {

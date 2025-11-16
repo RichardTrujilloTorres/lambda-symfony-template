@@ -23,7 +23,7 @@ abstract class ApiTestCase extends WebTestCase
             $method,
             $uri,
             server: ['CONTENT_TYPE' => 'application/json'],
-            content: $payload === [] ? null : json_encode($payload, JSON_THROW_ON_ERROR)
+            content: [] === $payload ? null : json_encode($payload, JSON_THROW_ON_ERROR)
         );
 
         return $this->client->getResponse();
