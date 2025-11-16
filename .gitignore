@@ -8,3 +8,25 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+# IDE
+.idea/
+.vscode/
+
+# Composer
+composer.phar
+
+# Cache and logs
+/var/cache/
+/var/log/
+
+# Environment variables
+.env.local
+.env.local.php
+.env.*.local
+
+# PHPUnit
+.phpunit.result.cache
+
+# Serverless
+.serverless/
