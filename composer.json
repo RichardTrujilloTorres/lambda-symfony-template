@@ -57,6 +57,20 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "start": [
+            "APP_ENV=dev symfony server:start"
+        ],
+        "start-php": [
+            "APP_ENV=dev php -S localhost:8000 -t public"
+        ],
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-text",
+        "deploy": "serverless deploy",
+        "remove": "serverless remove",
+        "logs": "serverless logs -f web --tail",
+        "cache:clear": [
+            "APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear"
         ]
     },
     "conflict": {
