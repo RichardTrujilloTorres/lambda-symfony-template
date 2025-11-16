@@ -66,6 +66,7 @@
         ],
         "test": "vendor/bin/phpunit",
         "test:coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-text",
+        "test:coverage-xml": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml",
         "deploy": "serverless deploy",
         "remove": "serverless remove",
         "logs": "serverless logs -f web --tail",
