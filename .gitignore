@@ -30,3 +30,8 @@ composer.phar
 
 # Serverless
 .serverless/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
