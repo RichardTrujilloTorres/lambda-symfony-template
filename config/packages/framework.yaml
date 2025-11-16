@@ -9,7 +9,7 @@ framework:
     #fragments: true
 
     trusted_proxies: 'REMOTE_ADDR'
-    trusted_headers: 'x-forwarded-all'
+    trusted_headers: [ 'x-forwarded-for', 'x-forwarded-proto', 'x-forwarded-port' ]
 
 when@test:
     framework:
