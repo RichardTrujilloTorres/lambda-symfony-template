@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/RichardTrujilloTorres/lambda-symfony-template/actions/workflows/ci.yml/badge.svg)](https://github.com/RichardTrujilloTorres/lambda-symfony-template/actions/workflows/ci.yml)
 [![Coverage](https://codecov.io/gh/RichardTrujilloTorres/lambda-symfony-template/branch/main/graph/badge.svg)](https://codecov.io/gh/RichardTrujilloTorres/lambda-symfony-template)
+[![PHPStan](https://img.shields.io/badge/PHPStan-level%206-blue)](https://github.com/RichardTrujilloTorres/lambda-symfony-template)
 
 A minimal, production-ready starter template for running **Symfony 7** on **AWS Lambda** using **Bref** and the **Serverless Framework**.
 
