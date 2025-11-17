@@ -186,3 +186,63 @@ See the [`LICENSE`](./LICENSE) file for details.
 ## 🙌 Contributing
 
 PRs welcome after initial template stabilization.
+
+---
+
+## 🧩 Development Notes (Hooks, Commit Format, DX)
+
+This template includes optional but helpful development tooling.
+
+### **Pre-commit hooks (automated checks)**
+
+These run **automatically before each commit**:
+
+- `composer cs:fix` — auto-fixes code style  
+- `composer stan` — prevents committing code with PHPStan errors  
+
+To bypass them temporarily:
+
+```bash
+git commit --no-verify
+```
+
+---
+
+### **Conventional Commit Messages**
+
+Commit messages must follow:
+
+```
+<type>(optional-scope): message
+```
+
+Allowed types:
+
+`feat`, `fix`, `docs`, `chore`, `ci`, `test`, `refactor`, `perf`, `style`, `build`, `revert`
+
+Example:
+
+```
+feat(api): add health check
+```
+
+---
+
+## 🔒 Environment Files & Secrets
+
+This repo includes `.env`, `.env.dev`, `.env.test` — **only with non-secret defaults**.
+
+**Never commit real credentials.**
+
+Use:
+
+- `.env.local` (gitignored) for local secrets  
+- environment variables in production (Lambda / Serverless)
+
+---
+
+## 🗺️ Project Status
+
+This project is still **stabilizing**.  
+You may open issues freely.  
+PRs are welcome but may be reviewed after the first milestone release (`v0.1.0`).
