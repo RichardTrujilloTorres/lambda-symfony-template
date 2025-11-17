@@ -97,3 +97,19 @@ logs:
 sls-print:
 	@echo "$(GREEN)> Validating Serverless config...$(NC)"
 	serverless print
+
+# Build local AWS-style environment
+lambda-local-build:
+	docker compose pull app
+
+# Run local AWS-style environment
+lambda-local-up:
+	docker compose up
+
+# Run in detached mode
+lambda-local-up-d:
+	docker compose up -d
+
+# Stop local environment
+lambda-local-down:
+	docker compose down
