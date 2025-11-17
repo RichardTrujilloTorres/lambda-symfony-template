@@ -176,19 +176,6 @@ https://xxxxx.execute-api.region.amazonaws.com/health
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License**.  
-See the [`LICENSE`](./LICENSE) file for details.
-
----
-
-## 🙌 Contributing
-
-PRs welcome after initial template stabilization.
-
----
-
 ## 🐳 Local Lambda-Like Runner (Docker)
 
 This template includes a minimal Docker setup for running Symfony in a **Bref FPM runtime** locally — no Nginx, no custom Dockerfile, just a lightweight HTTP server built into `bref/php-82-fpm-dev`.
@@ -212,3 +199,16 @@ make lambda-local-down
 ```
 
 This uses the official `bref/php-82-fpm-dev` image, which mirrors the real Lambda FPM runtime while exposing a local HTTP endpoint for development.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+See the [`LICENSE`](./LICENSE) file for details.
+
+---
+
+## 🙌 Contributing
+
+PRs welcome after initial template stabilization.
