@@ -189,60 +189,26 @@ PRs welcome after initial template stabilization.
 
 ---
 
-## 🧩 Development Notes (Hooks, Commit Format, DX)
+## 🐳 Local Lambda-Like Runner (Docker)
 
-This template includes optional but helpful development tooling.
+This template includes a minimal Docker setup for running Symfony in a **Bref FPM runtime** locally — no Nginx, no custom Dockerfile, just a lightweight HTTP server built into `bref/php-82-fpm-dev`.
 
-### **Pre-commit hooks (automated checks)**
-
-These run **automatically before each commit**:
-
-- `composer cs:fix` — auto-fixes code style  
-- `composer stan` — prevents committing code with PHPStan errors  
-
-To bypass them temporarily:
+Start the local Lambda-style server:
 
 ```bash
-git commit --no-verify
+make lambda-local-up
 ```
 
----
-
-### **Conventional Commit Messages**
-
-Commit messages must follow:
+Then open:
 
 ```
-<type>(optional-scope): message
+http://localhost:8080/health
 ```
 
-Allowed types:
+Stop it:
 
-`feat`, `fix`, `docs`, `chore`, `ci`, `test`, `refactor`, `perf`, `style`, `build`, `revert`
-
-Example:
-
-```
-feat(api): add health check
+```bash
+make lambda-local-down
 ```
 
----
-
-## 🔒 Environment Files & Secrets
-
-This repo includes `.env`, `.env.dev`, `.env.test` — **only with non-secret defaults**.
-
-**Never commit real credentials.**
-
-Use:
-
-- `.env.local` (gitignored) for local secrets  
-- environment variables in production (Lambda / Serverless)
-
----
-
-## 🗺️ Project Status
-
-This project is still **stabilizing**.  
-You may open issues freely.  
-PRs are welcome but may be reviewed after the first milestone release (`v0.1.0`).
+This uses the official `bref/php-82-fpm-dev` image, which mirrors the real Lambda FPM runtime while exposing a local HTTP endpoint for development.
